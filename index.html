@@ -132,10 +132,27 @@
 
         .brand-block h1 {
             margin: 0;
-            font-size: clamp(2.2rem, 7vw, 4.8rem);
-            line-height: 0.92;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            line-height: 1;
             color: var(--chalk);
             word-break: break-word;
+        }
+
+        .hero-name {
+            font-size: clamp(2.2rem, 7vw, 4.8rem);
+            font-weight: 800;
+            text-transform: uppercase;
+            display: block;
+            line-height: 0.9;
+        }
+
+        .hero-number {
+            font-size: clamp(1.4rem, 4vw, 2.8rem);
+            font-weight: 700;
+            opacity: 0.9;
+            margin-top: -0.1em;
         }
 
         .tagline {
@@ -144,6 +161,7 @@
             font-size: 0.9rem;
             max-width: 30rem;
             word-wrap: break-word;
+            text-align: center;
         }
 
         .tape,
@@ -260,13 +278,6 @@
             box-shadow: 3px 3px 0 rgba(0, 0, 0, 0.46);
         }
 
-        .bottom-row {
-            display: grid;
-            grid-template-columns: minmax(0, 1.3fr) minmax(260px, 0.8fr);
-            gap: 18px;
-            align-items: start;
-        }
-
         .paper-note {
             padding: 20px 18px;
             color: var(--ink);
@@ -278,16 +289,10 @@
             font-size: 0.85rem;
             word-wrap: break-word;
             animation: floatIn 0.7s ease-out;
-        }
-
-        .note-main {
-            transform: rotate(-0.85deg);
-            animation-delay: 0.2s;
-        }
-
-        .note-side {
             transform: rotate(1.05deg);
-            animation-delay: 0.4s;
+            max-width: 600px;
+            margin: 0 auto;
+            width: 100%;
         }
 
         .paper-note p {
@@ -334,7 +339,6 @@
             margin-top: 14px;
         }
 
-        .footer-links button,
         .footer-links a {
             background: transparent;
             border: 1px solid var(--line);
@@ -351,13 +355,11 @@
             display: inline-block;
         }
 
-        .footer-links button:hover,
         .footer-links a:hover {
             background: var(--line);
             color: var(--chalk);
         }
 
-        /* Стили для красных кнопок Winline и Grogupay */
         .footer-buttons {
             margin-top: 20px;
             display: flex;
@@ -397,92 +399,9 @@
             box-shadow: 0 2px 4px rgba(0, 0, 0, 0.4);
         }
 
-        .modal {
-            display: none;
-            position: fixed;
-            inset: 0;
-            z-index: 100;
-            background: rgba(0,0,0,0.8);
-            backdrop-filter: blur(6px);
-            align-items: center;
-            justify-content: center;
-            padding: 20px;
-        }
-
-        .modal.active {
-            display: flex;
-        }
-
-        .modal-content {
-            background: var(--panel);
-            border: 3px solid var(--line);
-            box-shadow: 14px 14px 0 rgba(0,0,0,0.65);
-            max-width: 620px;
-            width: 100%;
-            max-height: 85vh;
-            overflow-y: auto;
-            color: var(--chalk);
-            transform: rotate(-0.4deg);
-            font-size: 0.9rem;
-        }
-
-        .modal-header {
-            background: var(--panel-2);
-            border-bottom: 2px solid var(--line);
-            padding: 18px 22px;
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .modal-header h2 {
-            margin: 0;
-            font-size: 1.3rem;
-            color: var(--acid);
-            text-transform: uppercase;
-            letter-spacing: 0.08em;
-        }
-
-        .modal-close {
-            background: none;
-            border: 2px solid var(--line);
-            color: var(--chalk);
-            font-size: 1.7rem;
-            width: 40px;
-            height: 40px;
-            cursor: pointer;
-            transition: background 0.2s;
-        }
-
-        .modal-close:hover {
-            background: var(--line);
-        }
-
-        .modal-body {
-            padding: 22px;
-            line-height: 1.6;
-            word-wrap: break-word;
-        }
-
-        .modal-body a {
-            color: var(--rust);
-        }
-
-        .config-grid {
-            display: grid;
-            grid-template-columns: auto 1fr;
-            gap: 8px 16px;
-            margin-top: 10px;
-        }
-
-        .config-label {
-            color: var(--rust);
-            font-weight: 700;
-        }
-
         @keyframes floatIn {
             0% { opacity: 0; transform: translateY(14px) rotate(0deg); }
-            100% { opacity: 1; transform: translateY(0) rotate(0.35deg); }
+            100% { opacity: 1; transform: translateY(0) rotate(1.05deg); }
         }
 
         @keyframes fadeUp {
@@ -506,9 +425,6 @@
             }
             .brand-block {
                 order: -1;
-            }
-            .bottom-row {
-                grid-template-columns: 1fr;
             }
         }
 
@@ -538,8 +454,11 @@
         }
 
         @media (max-width: 520px) {
-            .brand-block h1 {
+            .hero-name {
                 font-size: clamp(1.8rem, 11vw, 2.6rem);
+            }
+            .hero-number {
+                font-size: clamp(1.2rem, 6vw, 1.8rem);
             }
             .tagline {
                 font-size: 0.8rem;
@@ -558,7 +477,6 @@
         }
     </style>
 
-    <!-- Yandex.Metrika counter --> <script type="text/javascript">     (function(m,e,t,r,i,k,a){         m[i]=m[i]||function(){(m[i].a=m[i].a||[]).push(arguments)};         m[i].l=1*new Date();         for (var j = 0; j < document.scripts.length; j++) {if (document.scripts[j].src === r) { return; }}         k=e.createElement(t),a=e.getElementsByTagName(t)[0],k.async=1,k.src=r,a.parentNode.insertBefore(k,a)     })(window, document,'script','https://mc.webvisor.org/metrika/tag_ww.js?id=110713973', 'ym');      ym(110713973, 'init', {ssr:true, webvisor:true, clickmap:true, ecommerce:"dataLayer", referrer: document.referrer, url: location.href, accurateTrackBounce:true, trackLinks:true}); </script> <noscript><div><img src="https://mc.yandex.ru/watch/110713973" style="position:absolute; left:-9999px;" alt="" /></div></noscript> <!-- /Yandex.Metrika counter -->
 
 </head>
 <body>
@@ -570,7 +488,10 @@
         </div>
         <div class="brand-block">
             <div class="eyebrow">Andryha007s Production</div>
-            <h1>ANDRYHA007S</h1>
+            <h1>
+                <span class="hero-name">ANDRYHA</span>
+                <span class="hero-number">007S</span>
+            </h1>
             <div class="tagline">Шутеры, коопы, общение с чатом. Подписывайся и залетай на стрим!</div>
         </div>
         <div class="masthead-right">
@@ -581,146 +502,42 @@
     <div class="links-section">
         <div class="links-title">Service Links</div>
         <div class="links-grid">
-            <a href="https://twitch.tv/andryha007s" target="_blank" class="service-button">TWITCH</a>
+            <a href="https://www.twitch.tv/andryha007s" target="_blank" class="service-button">TWITCH</a>
             <a href="https://t.me/andryha007s" target="_blank" class="service-button">TELEGRAM</a>
-            <a href="https://www.donationalerts.com/r/andryha007s" target="_blank" class="service-button">DonationAlerts</a>
+            <a href="https://www.tiktok.com/@tt_kapitanych" target="_blank" class="service-button">TIKTOK</a>
+            <a href="https://www.donationalerts.com/r/andryha007s" target="_blank" class="service-button">DONATIONALERTS</a>
+            <a href="https://grgu.net/andryha" target="_blank" class="service-button">GROGUPAY</a>
+            <a href="https://p.winline.ru/s/Mu6bo7yV6f?statid=6922_&promocode=ANDRYHA" target="_blank" class="service-button">WINLINE</a>
         </div>
     </div>
 
-
+    <div class="paper-note">
+        <span class="paper-title">⚙️ Конфиг ПК</span>
+        <p>1060 3GB + Ryzen AMD 5 2600X + 16 GB ОЗУ</p>
+    </div>
+</div>
 
 <footer class="site-footer">
     <div class="footer-credits">
-        <span>🎮 <a href="https://twitch.tv/andryha007s" target="_blank">Andryha007s</a></span>
+        <span>🎮 <a href="https://www.twitch.tv/andryha007s" target="_blank">Andryha007s</a></span>
+        <span>💻 <a href="https://t.me/multicooker01" target="_blank">Multivarka</a></span>
     </div>
     <div class="footer-links">
-        <a href="https://www.donationalerts.com/r/andryha007s" target="_blank">Donatex</a>
-        <a href="https://t.me/KapitanGG" target="_blank">Telegram</a>
-        <button id="lang-toggle">EN</button>
+        <a href="https://www.donationalerts.com/r/andryha007s" target="_blank">DonationAlerts</a>
+        <a href="https://t.me/andryha007s" target="_blank">Telegram</a>
+        <a href="https://www.tiktok.com/@tt_kapitanych" target="_blank">TikTok</a>
     </div>
 
-    <!-- КРАСНЫЕ КНОПКИ WINLINE И GROGUPAY -->
     <div class="footer-buttons">
-        <a href="#" target="_blank" class="btn-winline">Winline</a>
-        <a href="#" target="_blank" class="btn-grogupay">Grogupay</a>
+        <a href="https://p.winline.ru/s/Mu6bo7yV6f?statid=6922_&promocode=ANDRYHA" target="_blank" class="btn-winline">Winline</a>
+        <a href="https://grgu.net/andryha" target="_blank" class="btn-grogupay">Grogupay</a>
     </div>
 
     <p style="margin-top:20px;">© <span id="current-year"></span> Andryha007s. All rights reserved.</p>
 </footer>
 
-<div class="modal" id="rules-modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Правила чата Twitch</h2>
-            <button class="modal-close" data-close="rules-modal">×</button>
-        </div>
-        <div class="modal-body" id="rules-body"></div>
-    </div>
-</div>
-
-<div class="modal" id="config-modal">
-    <div class="modal-content">
-        <div class="modal-header">
-            <h2>Конфигурация ПК Kapitanych</h2>
-            <button class="modal-close" data-close="config-modal">×</button>
-        </div>
-        <div class="modal-body">
-            <div class="config-grid">
-                <span class="config-label">Процессор:</span><span>AMD Ryzen 7 7800X3D</span>
-                <span class="config-label">Материнская плата:</span><span>Gigabyte B850M Gaming X WiFi6E</span>
-                <span class="config-label">ОЗУ:</span><span>Kingston FURY Beast 2x16 32GB DDR5 6000МГц</span>
-                <span class="config-label">Видеокарта:</span><span>Gigabyte RTX 3080 Gaming OC 10G</span>
-                <span class="config-label">SSD:</span><span>M.2 NVME GXF Gen4x4 7450MB/s 1TB</span>
-                <span class="config-label">HDD:</span><span>Toshiba 500GB x1</span>
-                <span class="config-label">Блок питания:</span><span>1200W</span>
-                <span class="config-label">Охлаждение:</span><span>IWONGOU AR12PRO ARGB 240</span>
-                <span class="config-label">Наушники:</span><span>KZ ZVX + Marshall MAJOR V</span>
-                <span class="config-label">Микрофон:</span><span>Fifine Ampligame A8</span>
-                <span class="config-label">Мышь:</span><span>AJAZZ AJ159 Apex</span>
-                <span class="config-label">Клавиатура:</span><span>LEAVEN K550 механика</span>
-                <span class="config-label">Монитор:</span><span>Xiaomi G27 165Гц (x2)</span>
-            </div>
-        </div>
-    </div>
-</div>
-
 <script>
-    (function() {
-        const translations = {
-            ru: `<p>Модератор самостоятельно выбирает меру наказания. Тяжёлые нарушения = бан без разблокировки.</p>
-                 <ul><li>Запрещены спам, флуд и повторяющиеся сообщения.</li>
-                 <li>Запрещена реклама своих проектов и сторонних ресурсов.</li>
-                 <li>Запрещены провокации, оскорбления и агрессия.</li>
-                 <li>Запрещена публикация шок-контента и интимного контента.</li>
-                 <li>Нельзя выкладывать личные данные (адреса, телефоны…).</li>
-                 <li>Запрещено выпрашивать VIP/модерку/подписки.</li></ul>
-                 <p>Нарушение правил влечёт наказание по усмотрению модерации.</p>`,
-            en: `<p>The moderator independently decides on punishment. Severe violations = permanent ban.</p>
-                 <ul><li>No spam, flood, or repetitive messages.</li>
-                 <li>No advertising of your own projects or third-party resources.</li>
-                 <li>No provocations, insults, or aggression.</li>
-                 <li>No shock or explicit content.</li>
-                 <li>Do not share personal data (addresses, phones…).</li>
-                 <li>Do not beg for VIP/mod/subscriptions.</li></ul>
-                 <p>Violation of the rules entails punishment at the discretion of the moderation.</p>`
-        };
-
-        let currentLang = localStorage.getItem('preferredLang') || 'ru';
-
-        function applyLanguage(lang) {
-            const rulesBody = document.getElementById('rules-body');
-            if (rulesBody && translations[lang]) {
-                rulesBody.innerHTML = translations[lang];
-            }
-            document.getElementById('lang-toggle').textContent = lang === 'ru' ? 'EN' : 'RU';
-            localStorage.setItem('preferredLang', lang);
-            currentLang = lang;
-        }
-
-        applyLanguage(currentLang);
-
-        document.getElementById('lang-toggle').addEventListener('click', () => {
-            const newLang = currentLang === 'ru' ? 'en' : 'ru';
-            applyLanguage(newLang);
-        });
-
-        function openModal(id) {
-            document.getElementById(id).classList.add('active');
-            document.body.style.overflow = 'hidden';
-        }
-
-        function closeModal(id) {
-            document.getElementById(id).classList.remove('active');
-            document.body.style.overflow = '';
-        }
-
-        function closeAllModals() {
-            document.querySelectorAll('.modal.active').forEach(m => m.classList.remove('active'));
-            document.body.style.overflow = '';
-        }
-
-        document.getElementById('show-rules-btn').addEventListener('click', () => openModal('rules-modal'));
-        document.getElementById('show-config-btn').addEventListener('click', () => openModal('config-modal'));
-
-        document.querySelectorAll('.modal-close').forEach(btn => {
-            btn.addEventListener('click', () => {
-                const modalId = btn.dataset.close;
-                if (modalId) closeModal(modalId);
-            });
-        });
-
-        document.querySelectorAll('.modal').forEach(modal => {
-            modal.addEventListener('click', (e) => {
-                if (e.target === modal) closeModal(modal.id);
-            });
-        });
-
-        document.addEventListener('keydown', (e) => {
-            if (e.key === 'Escape') closeAllModals();
-        });
-
-        document.getElementById('current-year').textContent = new Date().getFullYear();
-    })();
+    document.getElementById('current-year').textContent = new Date().getFullYear();
 </script>
 </body>
 </html>
